@@ -1,0 +1,307 @@
+What is Kotlin?
+
+Kotlin : High Level Programming Language
+     You -> Kotlin -> JVM -> Machine Code -> Computer
+
+
+Kotlin supports multiple programming styles:
+
+    Object-Oriented Programming (OOP)
+    Functional Programming (FP)
+    Procedural Programming
+
+------------------------------------------------------------------------------------------------------------------------
+
+Before Kotlin, Android development was mostly done in Java.
+
+Java:
+
+    String name = "John";
+    System.out.println(name);
+
+Kotlin:
+
+    val name = "John"
+    println(name)
+
+
+Java is strictly OOP based language so everything can be written only inside classes
+Kotlin allows us to write code without classes
+
+------------------------------------------------------------------------------------------------------------------------
+
+How Kotlin code works ?
+
+Kotlin code (source code) -> compiled by the kotlin compiler -> java bytecode
+.kt file -> compiled -> .class file
+this .class file is platform independent
+Kotlin mainly runs on JVM
+
+------------------------------------------------------------------------------------------------------------------------
+
+    Your Kotlin Code
+         ↓
+    Kotlin Compiler
+         ↓
+     Bytecode
+        ↓
+       JVM
+        ↓
+    Machine Code
+        ↓
+       CPU
+        ↓
+    Program Runs
+
+------------------------------------------------------------------------------------------------------------------------
+
+Kotlin/JVM
+    Most common.
+    Kotlin -> Bytecode -> JVM
+    Used for:
+        Android
+        Backend development
+
+
+Kotlin Native
+    Kotlin -> Native Machine Code
+    No JVM.
+    Directly creates machine code.
+    Used for:
+        iOS
+        macOS
+        Native applications
+
+
+Kotlin/JS
+    Kotlin -> JavaScript -> Browser
+    Runs inside browsers.
+
+------------------------------------------------------------------------------------------------------------------------
+
+To print "Hello"
+
+Step 1: Source code
+
+    You write the kotlin code file ;
+
+    Main.kt :
+    fun main() {
+        println("Hello")
+    }
+
+
+Step 2: Compilation
+
+    kotlinc -> kotlin compiler
+
+    When you run:
+    kotlinc Main.kt
+    the Kotlin compiler starts reading your source code.
+
+
+Step 3: Lexical Analysis (Tokenization)
+
+    The compiler breaks your code into meaningful pieces.
+
+
+Step 4: Parsing
+
+     Now the compiler checks grammar.
+
+Step 5: Semantic Analysis
+
+     Now the compiler checks meaning.
+
+
+Step 6: Bytecode Generation
+
+     Now the compiler generates:  Bytecode
+
+     This is the MOST important step.
+
+     Your Kotlin code:
+        println("Hello")
+     is transformed into JVM instructions.
+
+
+     creates MainKt.class file
+
+
+Step 7: JVM Starts
+
+     java MainKt.class
+     Now the JVM launches.
+
+
+Step 8: Class Loading, Memory Allocation
+
+    JVM now loads MainKt.class into memory.
+    This process is called Class Loading
+
+    Now JVM creates memory areas.
+    JVM Memory :
+        Stack
+        Heap
+        Method Area
+
+Step 9: Finding main()
+
+    The JVM looks for:
+        fun main()
+
+    This is the entry point.
+
+    public static void main(String[] args) in java
+
+
+Step 10: Execution Begins
+
+    JVM starts executing bytecode instructions.
+
+    Something like:
+        LOAD STRING "Hello"
+        CALL println
+
+Step 11: Execution Engine
+
+    JVM Execution Engine starts reading instructions.
+
+    Interpreter Executes Initially
+    JVM interpreter reads bytecode, translates and executes line by line
+
+    JIT Detects Frequently Used Code
+    The JVM notices and marks it as hot code.
+
+    JIT Compiles Bytecode
+    JIT converts JVM bytecode into native machine code.
+
+Step 12: CPU Executes
+
+    Finally: Machine Code -> CPU
+    The CPU executes instructions.
+
+    Now your monitor displays:
+        Hello
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+Why Kotlin ?
+
+Java :
+too much boilerplate code
+NullPointerException
+crashes fast
+
+The requirements:
+
+    Must run on JVM
+    Must work with existing Java code
+    Must be safer
+    Must be shorter
+    Must be modern
+
+Result: Kotlin
+
+------------------------------------------------------------------------------------------------------------------------
+
+Problem 1: Boilerplate
+
+Java:
+
+public class User {
+    private String name;
+    private int age;
+
+    // constructor
+    // getters
+    // setters
+    // equals
+    // hashCode
+    // toString
+}
+
+Kotlin:
+
+data class User(
+    val name: String,
+    val age: Int
+)
+
+Compiler generates:
+
+constructor
+getters
+equals()
+hashCode()
+toString()
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+Problem 2: Null Safety
+
+Java:
+    String name = null;
+    name.length(); // crash
+
+Kotlin:
+    var name: String = null
+
+Compiler: Error
+Not allowed.
+
+If null is possible:
+var name: String? = null
+
+Kotlin forces you to handle it:
+println(name?.length)
+
+The compiler protects you before the program runs.
+
+------------------------------------------------------------------------------------------------------------------------
+
+Problem 3: Extension Functions
+
+Imagine Java's String class doesn't have a method you need.
+
+In Java:
+
+public class StringUtils {
+    public static String greet(String str) {
+        return "Hello " + str;
+    }
+}
+
+Usage:
+StringUtils.greet("John");
+
+Kotlin:
+
+fun String.greet(): String {
+    return "Hello $this"
+}
+
+Usage:
+"John".greet()
+
+Looks like the method belongs to String.
+
+------------------------------------------------------------------------------------------------------------------------
+
+Problem 5: Checked Exceptions
+
+Java:
+
+try {
+    file.read();
+}
+catch(IOException e) {
+}
+
+Kotlin removed checked exceptions.
+Less clutter.
+
+
