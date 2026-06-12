@@ -8,7 +8,7 @@ class Song(name: String){
         if (other !is Song)
             return false
 
-        return name == other.name
+        return name == (other as Song).name
     }
 }
 
@@ -21,6 +21,8 @@ fun main(){
     checkEquality(song1, song2)
     println()
     checkEquality(song1, song3)
+    println()
+    println(song1.equals("S"))
 }
 
 /*
