@@ -134,3 +134,15 @@ val invalidAge: Int? = null
 //compiled to Integer
 
 //the Kotlin compiler uses Java primitives whenever possible for performance, and wrapper classes only when necessary
+//You must write the conversion yourself with `toInt()`, `toDouble()`, etc. This is one of Kotlin's design choices to prevent accidental loss of data.
+
+/*
+Any
+├── Number
+│   ├── Int
+│   ├── Double
+│   └── Float
+├── String
+├── Boolean
+
+*/
