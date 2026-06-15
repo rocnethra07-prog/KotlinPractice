@@ -1,4 +1,4 @@
-package basics
+package basics.concept
 
 /*
 In kotlin variables are either var or val

@@ -1,4 +1,4 @@
-package basics;
+package basics.concept;
 
 public class Main {
     public Main(String name){

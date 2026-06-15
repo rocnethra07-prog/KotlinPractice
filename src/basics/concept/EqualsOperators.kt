@@ -1,4 +1,4 @@
-package basics
+package basics.concept
 
 class Song(name: String){
     var name = name
@@ -8,7 +8,7 @@ class Song(name: String){
         if (other !is Song)
             return false
 
-        return name == (other as Song).name
+        return name == (other).name
     }
 }
 
