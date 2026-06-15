@@ -38,5 +38,3 @@ fun checkEquality(song1:Song, song2:Song){
     println("song1.equals(song2) = " +song1.equals(song2))
     println("song1 === song2     = " + (song1 === song2))
 }
-
-

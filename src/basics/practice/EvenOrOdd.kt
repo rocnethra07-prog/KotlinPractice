@@ -71,3 +71,9 @@ fun main() {
 }
 
 
+/*
+String?      // nullable type
+?.           // safe call
+?:           // Elvis operator
+!!           // force non-null
+*/
