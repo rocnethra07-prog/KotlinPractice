@@ -55,7 +55,7 @@ private fun withdraw(bankAccount: BankAccount){
 private fun String.readFloat(): Float{
     while(true){
         println(this)
-        val inputAsFloat = readln().toFloatOrNull() ?: continue;
+        val inputAsFloat = readln().toFloatOrNull() ?: continue
         return inputAsFloat
     }
 }
