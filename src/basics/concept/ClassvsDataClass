@@ -1,0 +1,85 @@
+
+
+Class : is a blueprint for creating objects
+
+So normally when I write a class it means i am defining the blueprint of how that class objects is going to be
+
+class Student   : means i am writing a class for Student and define the properties and behaviour of Student class objects
+
+so basically Student has name, age, department...
+
+class Student(val name: String, val age: Int)
+i can create multiple Students using this class
+
+var student = Student("John",12)
+create object
+
+name = "John"
+age = 12
+
+return object
+
+with behaviours :
+class Student(val name: String, val age: Int) {
+    fun introduce() {
+            println("My name is $name")
+    }
+}
+
+1. print(student)   -> Student@hashcode
+2. student2 = Student("John",12)
+    student1 == student2 is false
+    they check the memory reference and not the content
+
+
+
+Data Class:
+For classes that mainly store data: (basically POJO class)
+
+data class Student(
+    val name: String,
+    val age: Int
+)
+
+1. print(student) === will print Student(name = "John", age = 12)
+and
+2. student1 == student2 === true
+it compares the content in it and not memory
+
+3. copy() function
+s2 = s1.copy(name = "Surya")
+
+4. Destructing
+instead of :  name = s1.name; age = s1.age
+
+var (name, age) = s1
+
+
+
+
+
+When to Use Class
+
+When the object has behavior and state.
+Like practice.atm.BankAccount
+
+
+
+When to Use Data Class
+
+When the object mostly carries data.
+Like Student
+
+
+data class User(
+    val name: String,
+    val age: Int
+)
+
+Kotlin automatically generates:
+
+toString()
+equals()
+hashCode()
+copy()
+destructuring functions
