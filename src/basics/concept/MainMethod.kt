@@ -15,7 +15,7 @@ fun main(){
     println("HI")
 }
 
-class User(userName: String){
+ class SampleUser(userName: String){
 
     var name = userName
 

@@ -64,7 +64,7 @@ var character = 'a'    //:Char
 var boolVar = true     //:Boolean
 
 
-var userObj = User("Kavya")  //:User
+//var userObj = User("Kavya")  //:User
 
 var names = listOf("Alice", "Bob", "Charlie") //:List<String>
 //Compiler looks at the arguments "Alice", "Bob", "Charlie" and infers it is a List of String
