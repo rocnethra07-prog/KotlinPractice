@@ -122,6 +122,7 @@ val name:String = "Nethra"     //
 val random: Any = "Anything" //Equivalent to Object in Java
 
 fun doNothing() : Unit {
+    return
     //Unit = void
 }
 

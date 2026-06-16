@@ -1,0 +1,53 @@
+
+OBJECTS
+
+class is just a blueprint
+
+class Cab
+is not a actual cab
+It's only instructions for how a cab should look.
+
+An object is the actual thing created from that blueprint
+
+Creating objects:
+
+1. MOST COMMON WAY - CONSTRUCTOR
+
+data class ClassName(val variable: Datatype)  -- constructor
+ClassName("value")                       -- object created
+
+2. FACTORY METHOD
+
+a factory method like factory.createCab(...) is called and it will return the object for me
+still inside the function i will call the constructor and return the object
+
+3. SINGLETON
+
+object DataBase{
+    val connection: Connection
+    fun connect() {}
+}
+
+DataBase.connection
+DataBase.connect()
+
+There is already one object.
+You don't create it.
+It already exists.
+
+No constructor call.
+
+Because object already exists.
+
+
+
+3. JSON
+{
+ "name":"Kavya"
+}
+
+comes from a server as a json
+
+You ask a library:
+
+Convert this JSON into User
