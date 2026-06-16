@@ -1,0 +1,136 @@
+Collections in Kotlin:
+
+Iterable
+    |
+Collection
+____|____
+|       |
+List    Set       Map
+
+
+List:
+    1. Ordered collection
+    2. Index based access
+    3. Duplicates allowed
+
+In Android/Kotlin:
+    ArrayList = King
+    95% of the time you're using ArrayList underneath.
+
+
+Kotlin List Types:
+    Read Only - listOf()
+    Mutable   - mutableListOf()
+
+
+val list = listOf(1,2)
+list[0] allowed
+list.add(3) compile error not allowed
+
+val mutList = mutableListOf(2,12,9)
+mutList.add() mutList.remove()  allowed
+
+internally JVM creates new ArrayList()
+
+dynamic resizing
+if [1][2][3]
+add(4)
+
+creates a new array and [1][2][3][4]
+old elements get copied
+
+List vs Array
+list is dynamic size and array has fixed size
+
+Fast read by index
+↓
+Slow insert/remove in middle
+
+listOf(1,2,3) is more like:
+
+List<Integer> numbers = Arrays.asList(1,2,3);
+IntArray = int[]
+
+KOTLIN                         JAVA
+
+List<T>              ≈         List<T> (read-only usage)
+
+MutableList<T>       ≈         List<T>
+
+ArrayList<T>         ≈         ArrayList<T>
+
+mutableListOf()      ≈         new ArrayList<>()
+
+arrayListOf()        ≈         new ArrayList<>()
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Set:
+    1. Unique collection of elements
+    2. Unordered collection
+    3. No index based access
+
+
+setOf()   -- read only set
+mutableSetOf()   -- mutable set
+hashSetOf()
+linkedSetOf()
+
+mutableSetOf() internally  JVM uses LinkedHashSet
+Why?
+Because Kotlin wants predictable order.
+
+KOTLIN                    JAVA
+
+Set<T>             ≈      Set<T>
+
+MutableSet<T>      ≈      Set<T>
+
+HashSet<T>         ≈      HashSet<T>
+
+LinkedHashSet<T>   ≈      LinkedHashSet<T>
+
+TreeSet<T>         ≈      TreeSet<T>
+
+setOf()            ≈      Unmodifiable Set<T> (linked hash set)
+
+mutableSetOf()     ≈      new LinkedHashSet<>()
+
+hashSetOf()        ≈      new HashSet<>()
+
+linkedSetOf()      ≈      new LinkedHashSet<>()
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Map:
+    1. Key-value pairs
+
+
+mapOf()    -- read only map
+mutableMapOf()  -- mutable map
+hashMapOf()
+linkedMapOf()
+
+internally uses LinkedHashMap
+
+KOTLIN                     JAVA
+
+Map<K,V>            ≈      Map<K,V>
+
+MutableMap<K,V>     ≈      Map<K,V>
+
+HashMap<K,V>        ≈      HashMap<K,V>
+
+LinkedHashMap<K,V>  ≈      LinkedHashMap<K,V>
+
+TreeMap<K,V>        ≈      TreeMap<K,V>
+
+mapOf()             ≈      Unmodifiable Map (linked hash map)
+
+mutableMapOf()      ≈      new LinkedHashMap<>()
+
+hashMapOf()         ≈      new HashMap<>()
+
+linkedMapOf()       ≈      new LinkedHashMap<>()
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
