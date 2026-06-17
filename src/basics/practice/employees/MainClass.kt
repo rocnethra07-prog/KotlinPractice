@@ -1,6 +1,5 @@
 package basics.practice.employees
 
-import java.math.BigDecimal
 
 fun main(){
     val emp1 = Employee("Nethra", 18, 20000)
@@ -44,7 +43,6 @@ fun main(){
     )                                                      //6
 
 
-
     println(
         listOfEmployee.sortedWith (
             compareBy<Employee>{ employee -> employee.salary }
@@ -57,8 +55,6 @@ fun main(){
         )
     )
 
-    println(listOfEmployee.sortedBy { it.salary})
-
-
+    println(listOfEmployee.sortedBy { it.salary} )
 
 }
