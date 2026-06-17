@@ -21,6 +21,6 @@ class BankAccount(private val user: User,private var accountBalance: Float){
 
 //    fun changeName(name: String){
 //        accountHolder = name
-//    }- cannot be done
+//    } - cannot be done
 
 }
