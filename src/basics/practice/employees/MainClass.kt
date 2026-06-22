@@ -28,7 +28,6 @@ fun main(){
         e1, e2 -> e1.age.compareTo(e2.age)
     }
 //    Under the hood, Kotlin converts that lambda into a Comparator object automatically.
-
 //    println(sortedList2)                                  - 4
 
     println(
@@ -55,6 +54,6 @@ fun main(){
         )
     )
 
-    println(listOfEmployee.sortedBy { it.salary} )
+    println(listOfEmployee.sortedBy ({ it.salary} ))
 
 }
