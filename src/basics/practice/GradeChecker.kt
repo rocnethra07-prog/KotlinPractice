@@ -1,7 +1,6 @@
 package basics.practice
 
 fun main(){
-
     print("Enter name: ")
     val name = readln().trim()
     var score: Int?
@@ -20,7 +19,6 @@ fun main(){
         break
 
     }while (true)
-
     try {
         val grade = getGrade(score)
         print("$name has scored $grade Grade")
@@ -31,11 +29,9 @@ fun main(){
 }
 
 fun getGrade(score: Int) : Char{
-
     if(score !in 0..100){
         throw IllegalArgumentException("Invalid score. Average score should be within 0 to 100 ")
     }
-
     return when(score){
         in 90 .. 100 -> 'A'
         in 80 .. 89 -> 'B'
