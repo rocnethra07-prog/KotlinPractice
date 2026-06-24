@@ -5,23 +5,43 @@ import java.math.BigDecimal
 fun main(){
     println("--------- LOAN APPLICATION ---------")
 
+    val name = InputUtil.getApplicantName("Name of the applicant: ")
+    val requiredAmount = InputUtil.getAmountInBigDecimal("Enter required amount: ")
+    var loan : Loan = getLoanChoice(name, requiredAmount)
 
-    var name: String
-    while (true){
-        print("Name of the applicant : ")
-        name = readln()
-        if(name.isBlank()){
-            println("Name cannot be blank. Enter a valid name")
-            continue
+    println()
+    println("Loan application created successfully.")
+    println("Applicant Name   : ${loan.nameOfApplicant}")
+    println("Requested Amount : ${loan.requestedAmt}")
+    println("Interest         : ${loan.interest}%")
+    println("Current Status   : ${loan.status}")
+
+    try {
+        startVerification(loan)
+        println()
+        println("Loan moved to verification.")
+        println("Current Status   : ${loan.status}")
+
+        val isApproved = loan.verify()
+
+        if (isApproved) {
+            loan.status = LoanStatus.APPROVED
+            println("Loan approved successfully.")
+            println("Final Status     : ${loan.status}")
         }
-        break
+        else {
+            println("Loan verification failed.")
+            println("Final Status     : ${loan.status}")
+        }
+
+    }
+    catch (e: LoanApplicationException) {
+        println("Loan processing error: ${e.message}")
     }
 
-    var requiredAmount: BigDecimal = InputUtil.getBigDecimal("")
+}
 
-
-
-    var loanChoice: String
+fun getLoanChoice(name: String, requiredAmount: BigDecimal) : Loan{
     while(true){
         println("What type of loan are you applying for? ")
         println("1 PERSONAL LOAN")
@@ -29,14 +49,17 @@ fun main(){
         println("3 EDUCATION LOAN")
         print("Choose loan type: ")
 
-        loanChoice = readln().trim()
+        val loanChoice = readln().trim()
 
         when(loanChoice){
-
+            "1" -> return PersonalLoan(nameOfApplicant = name, requestedAmt = requiredAmount)
+            "2" -> return HomeLoan(nameOfApplicant = name, requestedAmt = requiredAmount)
+            "3" -> return EducationLoan(nameOfApplicant = name, requestedAmt = requiredAmount)
+            else -> print("Invalid choice. Try again")
         }
-
     }
+}
 
-
-
+fun startVerification(loan: Loan){
+    loan.status = LoanStatus.ON_VERIFICATION
 }

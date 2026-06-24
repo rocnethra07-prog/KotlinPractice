@@ -2,18 +2,19 @@ package basics.practice.bank
 
 import java.math.BigDecimal
 
-class HomeLoan(nameOfApplicant: String, idOfApplicant: String, requestedAmt : BigDecimal,interest: BigDecimal) : Loan(nameOfApplicant,idOfApplicant, requestedAmt, interest) , IncomeCheck, CreditCheck {
+class HomeLoan(nameOfApplicant: String, requestedAmt : BigDecimal,interest: BigDecimal = BigDecimal("8.0")) : Loan(nameOfApplicant, requestedAmt, interest) , IncomeCheck, CreditCheck {
 
-    override fun doIncomeCheck() : Boolean{
+    override fun doIncomeCheck(): Boolean {
+        val income = InputUtil.getAmountInBigDecimal("Enter monthly income: ")
+        return income >= BigDecimal("75000")
+    }
 
+    override fun doCreditCheck(): Boolean {
+        val creditScore = InputUtil.getCreditScore("Enter credit score: ")
+        return creditScore >= 700
     }
 
     override fun verify() : Boolean{
         return doCreditCheck() && doIncomeCheck()
     }
-
-    override fun doCreditCheck(): Boolean {
-
-    }
-
 }
