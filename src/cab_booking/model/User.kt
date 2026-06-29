@@ -14,22 +14,32 @@ open class User(
 
     var name: String = name.trim()
         set(value) {
-            Validator.isValidName(value)
+            require(Validator.isValidName(value)){
+                "Name must contain minimum 3 characters. Name cannot be blank"
+            }
             field = value.trim()
         }
 
     var phone: String = phone.trim()
         set(value) {
-            Validator.isValidPhone(value)
+            require(Validator.isValidPhone(value)){
+                "Invalid phone number format. Phone cannot be blank"
+            }
             field = value.trim()
         }
 
     val email: String = email.trim().lowercase()
 
     init {
-        Validator.isValidName(name)
-        Validator.isValidPhone(phone)
-        Validator.isValidEmail(email)
+        require(Validator.isValidName(name)){
+            "Name must contain minimum 3 characters. Name cannot be blank"
+        }
+        require(Validator.isValidPhone(phone)){
+            "Invalid phone number format. Phone cannot be blank"
+        }
+        require(Validator.isValidEmail(email)){
+            "Invalid email format. Email cannot be blank"
+        }
     }
 
     override fun equals(other: Any?): Boolean {
