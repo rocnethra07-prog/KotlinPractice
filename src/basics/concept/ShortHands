@@ -1,0 +1,6 @@
+
+
+Require / Check:
+Tiny mental rule to remember forever
+If the problem is from the caller / input → use require
+If the problem is from the program / object state → use check
