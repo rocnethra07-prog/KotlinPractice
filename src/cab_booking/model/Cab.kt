@@ -6,7 +6,8 @@ data class Cab(
     val cabId: String = IdGenerator.generateCabId(),
     val registrationNumber: String,
     val model: String,
-    val cabType: CabType
+    val cabType: CabType,
+    val driverId : String
 ) {
 
     init {
@@ -17,6 +18,10 @@ data class Cab(
         require(model.isNotBlank()) {
             "Car model cannot be blank."
         }
+
+        require(driverId.isNotBlank()){
+            "Driver Id cannot be blank"
+        }
     }
 
     override fun toString(): String {
@@ -25,6 +30,7 @@ data class Cab(
             Model            : $model
             Type             : $cabType
             Registration No. : $registrationNumber
+            Driver ID        : $driverId
         """.trimIndent()
     }
 }
