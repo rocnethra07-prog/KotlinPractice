@@ -52,6 +52,7 @@ class Driver(
     }
 
     fun updateLocation(location: Location) {
+        if(currentLocation == location) return
         currentLocation = location
     }
 
