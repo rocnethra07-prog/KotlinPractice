@@ -1,4 +1,83 @@
 package cab_booking.model
 
-data class Driver : User {
+import cab_booking.util.Validator
+import java.math.BigDecimal
+
+class Driver(
+    name: String,
+    phone: String,
+    email: String,
+    val cabId: String,
+    licenseNumber: String,
+    currentLocation: Location
+) : User(
+    name = name,
+    phone = phone,
+    email = email,
+    userRole = UserRole.DRIVER
+) {
+
+    val licenseNumber: String = licenseNumber.trim().uppercase()
+
+    var currentLocation: Location = currentLocation
+        private set
+
+    var earnings: BigDecimal = BigDecimal.ZERO
+        private set
+
+    var isAvailable: Boolean = true
+        private set
+
+    private var totalRating: Int = 0
+    private var ratingCount: Int = 0
+
+    init {
+        require(cabId.isNotBlank()) {
+            "Cab ID cannot be blank."
+        }
+
+        require(licenseNumber.isNotBlank()) {
+            "Invalid license number."
+        }
+    }
+
+    fun updateLocation(location: Location) {
+        currentLocation = location
+    }
+
+    fun markAvailable() {
+        isAvailable = true
+    }
+
+    fun markUnavailable() {
+        isAvailable = false
+    }
+
+    fun addEarnings(amount: BigDecimal) {
+        require(amount > BigDecimal.ZERO) {
+            "Amount must be greater than zero."
+        }
+
+        earnings += amount
+    }
+
+    fun addRating(rating: Int) {
+        require(rating in 1..5) {
+            "Rating must be between 1 and 5."
+        }
+
+        totalRating += rating
+        ratingCount++
+    }
+
+    override fun toString(): String {
+        return """
+            ${super.toString()}
+            Cab ID           : $cabId
+            License Number   : $licenseNumber
+            Current Location : $currentLocation
+            Available        : $isAvailable
+            Earnings         : ₹$earnings
+        """.trimIndent()
+    }
 }
