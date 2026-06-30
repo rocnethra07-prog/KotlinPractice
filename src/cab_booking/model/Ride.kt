@@ -19,13 +19,13 @@ class Ride(
 
     val bookedAt: LocalDateTime = LocalDateTime.now()
 
-    var completedAt: LocalDateTime? = null
+    var completedAt: LocalDateTime? = null //null by default
         private set
 
-    var cancelledAt: LocalDateTime? = null
+    var cancelledAt: LocalDateTime? = null //null by default
         private set
 
-    var rating: Int? = null
+    var rating: Int? = null  // 1–5, null if not yet rated
         private set
 
     init {
