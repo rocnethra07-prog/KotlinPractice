@@ -9,8 +9,20 @@ import cab_booking.util.InputUtil
 
 class AuthController(val authService: AuthService) {
 
-    fun login() : User{
+    fun login() : User?{
 
+        val email = InputUtil.getEmail()
+        val password = InputUtil.getPassword()
+
+        try {
+            val user: User = authService.loginUser(email, password)
+            println("\nWelcome back, " + user.name)
+            return user
+        }
+        catch (e: CabBookingException) {
+            println("[!] Login failed: " + e.message)
+            return null
+        }
     }
 
     fun register() : User?{

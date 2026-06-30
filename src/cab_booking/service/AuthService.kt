@@ -4,7 +4,6 @@ import cab_booking.builder.UserRegistrationData
 import cab_booking.exception.CabBookingException
 import cab_booking.model.User
 import cab_booking.model.UserAuthInfo
-import cab_booking.model.UserRole
 import cab_booking.repository.AuthRepo
 import cab_booking.repository.UserRepo
 
@@ -33,5 +32,18 @@ class AuthService() {
     private fun saveUserCredentials(user: User, password: String) {
         UserRepo.save(user)
         AuthRepo.save(UserAuthInfo(user.userId,password))
+    }
+
+    fun loginUser(email: String, password: String): User {
+        val user: User? = UserRepo.findByEmail(email)
+
+        if (user == null) {
+            throw CabBookingException("Account does not exist. Please register.")
+        }
+
+        if (!AuthRepo.validateCredentials(user.userId, password)) {
+            throw CabBookingException("Invalid credentials.")
+        }
+        return user
     }
 }
