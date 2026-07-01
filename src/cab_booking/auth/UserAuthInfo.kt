@@ -42,15 +42,6 @@ class UserAuthInfo(val userId: String, password: String) {
         return isValid
     }
 
-    fun changePassword(newPassword: String) {
-        require(Validator.isValidPassword(newPassword)) {
-            "Invalid password format."
-        }
-
-        passwordHash = hash(newPassword)
-        resetFailedAttempts()
-    }
-
     fun unlockAccount() {
         isAccountLocked = false
         resetFailedAttempts()
